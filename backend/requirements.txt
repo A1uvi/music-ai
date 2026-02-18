@@ -1,0 +1,33 @@
+fastapi==0.110.0
+uvicorn[standard]==0.27.0
+python-multipart==0.0.9
+pydantic>=2.9.0
+
+# Audio processing
+librosa==0.10.1
+soundfile==0.12.1
+numpy==1.26.0
+scipy==1.12.0
+
+# Neural pitch detection (primary back-end — falls back to PYIN if absent)
+basic-pitch>=0.3.0
+onnxruntime>=1.17.0  # preferred runtime for basic-pitch ONNX model (avoids TF 2.16 SavedModel bug)
+setuptools<81  # resampy uses pkg_resources, removed in setuptools>=81
+
+# Phase 2a: Stationary noise reduction (optional — graceful fallback if absent)
+noisereduce>=3.0.0
+
+# Phase 2b: Melody source separation (optional, slow on CPU, ~700 MB model)
+# demucs>=4.0.0
+
+# Phase 4: CREPE pitch refinement (optional — requires TensorFlow)
+# crepe>=0.0.13
+
+# Audio extraction
+yt-dlp>=2026.2.4
+ffmpeg-python==0.2.0
+
+# Utilities
+python-dotenv==1.0.0
+aiofiles==23.2.1
+pytest==8.0.0
